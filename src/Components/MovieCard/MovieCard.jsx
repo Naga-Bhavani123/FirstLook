@@ -1,7 +1,17 @@
 import React from 'react'
 import './MovieCard.css'
+import ReactContext from '../../ReactContext/ReactContext'
+import { use } from 'react'
+import { useState } from 'react'
 
 const MovieCard = ({ movie }) => {
+    const [isAdded,setIsAdded] = useState(false)
+    const {WishlistAdd} = use(ReactContext)
+    const addWishList= ()=>{
+        WishlistAdd(movie)
+        setIsAdded(prev=>!prev)
+    }
+
   return (
     <div className="imageDiv">
         <img
@@ -13,8 +23,8 @@ const MovieCard = ({ movie }) => {
             <div className="overlay">
                 <h1>{movie.title}</h1>
                 <div className="Playbuttons">
-                    <button className="addtowish">
-                        <i className="bi bi-heart"></i> Add to Wishlist
+                    <button className="addtowish" onClick={addWishList} >
+                        <i className="bi bi-heart"></i> {!isAdded ? 'Wish it!' : 'Unwish it!'}
                     </button>
                     <button className="watchlater">
                         <i className="bi bi-stopwatch"></i> Watch Later

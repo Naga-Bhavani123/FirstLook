@@ -1,0 +1,19 @@
+.wishDiv{
+    padding-top: 80px;        
+  background-color: #0d0d0d;  
+  min-height: 100vh;
+   display: grid;
+    grid-template-columns: repeat(auto-fit , 300px);
+    gap: 0px;
+}
+.wishHead{
+      color: white;
+    font-size: 34px;
+    font-weight: 500;
+    padding: 22px 32px;
+    padding-bottom: 0;
+    font-family: 'Edu NSW ACT Hand Pre', cursive;
+}
+.wishmainDiv{
+    
+}
