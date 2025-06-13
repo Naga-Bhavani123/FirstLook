@@ -1,6 +1,7 @@
 import React from 'react'
 const ReactContext = React.createContext({
     wishlist: [],
-    WishlistAdd: ()=>{}
+    WishlistAdd: ()=>{},
+    WishListRemove: ()=>{}
 })
 export default ReactContext
