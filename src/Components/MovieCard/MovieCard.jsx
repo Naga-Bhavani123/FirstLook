@@ -30,7 +30,9 @@ const MovieCard = ({ movie }) => {
             <button className="addtowish" onClick={toggleWishlist}>
               <i className="bi bi-heart"></i> {isAdded ? 'Unwish it!' : 'Wish it!'}
             </button>
-
+            <button className="watchlater">
+              <i className="bi bi-stopwatch"></i> Watch Later
+            </button>
           </div>
           <div className="rateDiv">
             <p>⭐ {movie.vote_average.toFixed(2)}</p>
