@@ -2,6 +2,9 @@
     display: grid;
     grid-template-columns: repeat(auto-fit , 300px);
     gap: 0px;
+    max-width: 1500px;
+    justify-content: center;
+    margin: auto;
 }
 .upcomingHead{
      color: white;
