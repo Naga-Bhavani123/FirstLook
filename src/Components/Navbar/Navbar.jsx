@@ -1,6 +1,7 @@
 import React from 'react';
 import './Navbar.css'; 
 import { NavLink } from 'react-router-dom';
+import Search from '../SearchBar/Search';
 
 const Navbar = () => {
   return (
@@ -31,6 +32,7 @@ const Navbar = () => {
         </li>
       </ul>
       <div className="nav-btn">
+        <Search/>
         <div className="signin-div">
           <button className="signin-btn">Sign In</button>
         </div>

@@ -44,6 +44,7 @@
   font-weight: 400;
   letter-spacing: 5px;
   opacity: 0;
+  color: white;
   animation: fadeSlideScaleIn 0.5s forwards;
 }
 

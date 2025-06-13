@@ -8,6 +8,7 @@ import ReactContext from './ReactContext/ReactContext';
 import { useState } from 'react';
 import WishList from './Components/WishList/WishList';
 import WatchList from './Components/WatchList/WatchList';
+import SearchRoot from './Components/SearchRoot/SearchRoot';
 function App() {
   const [wishlistArr, setwishlistArr] = useState([])
   const [watchArr, setWatchArr] = useState([])
@@ -38,8 +39,9 @@ const removewatch = (movie)=>{
           <Route path='/upcoming' element={<UpcomingMovies />} />
           <Route path='/trending' element={<TrendingSection />} />
           <Route path='/wishlist' element={<WishList />} />
-          <Route path='tv-shows' element={<Tvshows/>}/>
-          <Route path='watch-later' element={<WatchList/>}/>
+          <Route path='/tv-shows' element={<Tvshows/>}/>
+          <Route path='/watch-later' element={<WatchList/>}/>
+          <Route path='/search-results' element={<SearchRoot/>}/>
         </Routes>
       </ReactContext>
     </BrowserRouter>
