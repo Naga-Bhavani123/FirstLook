@@ -1,22 +1,48 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './WishList.css'
 import ReactContext from '../../ReactContext/ReactContext'
 import MovieCard from '../MovieCard/MovieCard'
 import { use } from 'react'
+import { ClipLoader } from 'react-spinners'
 
 const WishList = () => {
-  const {wishlist}  = use(ReactContext)
-  const name = <h1 className='wishDes'>Your favorite movies will appear here. Start exploring and add movies to your wishlist!</h1>
+  const { wishlist } = use(ReactContext)
+  const [loaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoaded(true)
+    }, 500) 
+    return () => clearTimeout(timer)
+  }, [])
+
+  const emptyMsg = (
+    <h1 className='wishDes'>
+      Your favorite movies will appear here. Start exploring and add movies to your wishlist!
+    </h1>
+  )
+
   return (
-    <div className='wishmainDiv'>
-      <h1 className='wishHead'>WishList</h1>
-      {wishlist.length >0 ? <div className='wishDiv'>
-        {wishlist.map((movie)=>(
-          <MovieCard key={movie.id} movie={movie}/>
-        ))}
-      </div>: name}
-      
-    </div>
+    <>
+      {!loaded ? (
+        <div className="spinner-containerss">
+          <ClipLoader color="#FF0000" size={60} />
+        </div>
+      ) : (
+        <div className='wishmainDiv'>
+          <h1 className='wishHead'>WishList</h1>
+          {wishlist.length > 0 ? (
+            <div className='wishDiv'>
+              {wishlist.map((movie) => (
+                <MovieCard key={movie.id} movie={movie} />
+              ))}
+            </div>
+          ) : (
+            emptyMsg
+          )}
+        </div>
+      )}
+    </>
   )
 }
 

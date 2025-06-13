@@ -1,19 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './HeroSection.css'
+import { ClipLoader } from 'react-spinners'
 
 const HeroSection = () => {
+    const [loaded, setIsLoaded] = useState(false);
+
     return (
         <div className='trailerDiv'>
-            <video autoPlay muted loop className='trailer'>
-                <source src='/trailer.mp4' />
+
+            {!loaded && (
+                <div className="spinner-container">
+                    <ClipLoader color="#FF0000" size={60} />
+                </div>
+            )}
+
+            <video
+                autoPlay
+                muted
+                loop
+                className={`trailer ${loaded ? 'visible' : 'hidden'}`}
+                preload="auto"
+                playsInline
+                onCanPlayThrough={() => setIsLoaded(true)}
+            >
+                <source src="/trailer.mp4" />
             </video>
-            <div className="trailerName">
-                <span>M</span><span>y</span><span style={{ width: '20px', display: 'inline-block' }}></span><span>F</span>
-                <span>a</span><span>u</span><span>l</span><span>t</span>
-            </div>
 
+            {loaded && (
+                <div className="trailerName">
+                    <span>M</span><span>y</span><span style={{ width: '20px', display: 'inline-block' }}></span><span>F</span>
+                    <span>a</span><span>u</span><span>l</span><span>t</span>
+                </div>
+            )}
         </div>
-    )
-}
+    );
+};
 
-export default HeroSection
+export default HeroSection;
