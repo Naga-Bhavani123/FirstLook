@@ -45,7 +45,7 @@ const MovieCard = ({ movie }) => {
             </button>
           </div>
           <div className="rateDiv">
-            <p>⭐ {movie.vote_average.toFixed(2)}</p>
+            <p>⭐ {movie.vote_average?.toFixed(2)}</p>
             <h2>{(movie.release_date || movie.first_air_date)?.slice(0, 4)}</h2>
           </div>
         </div>

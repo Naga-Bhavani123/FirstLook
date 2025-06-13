@@ -11,6 +11,7 @@ const Search = () => {
         navigate('./search-results')
     }
     const handleSearchChange = (e) => {
+      e.preventDefault()
     search(e.target.value); 
   };
   return (
