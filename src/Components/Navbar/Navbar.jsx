@@ -9,10 +9,26 @@ const Navbar = () => {
         <h1>TraiFlix</h1>
       </div>
       <ul className="nav-links">
-        <li><NavLink to="/" className={({isActive}) => isActive ? 'active-link' : ''}>Home</NavLink></li>
-        <li><NavLink to="/tv-shows" className={({isActive}) => isActive ? 'active-link' : ''}>TV Shows</NavLink></li>
-        <li><NavLink to="/wishlist" className={({isActive}) => isActive ? 'active-link' : ''}>WishList</NavLink></li>
-        <li><NavLink to="/watch-later" className={({isActive}) => isActive ? 'active-link' : ''}>Watch Later</NavLink></li>
+        <li>
+          <NavLink to="/" className={({isActive}) => isActive ? 'active-link' : ''}>
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/tv-shows" className={({isActive}) => isActive ? 'active-link' : ''}>
+            TV Shows
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/wishlist" className={({isActive}) => isActive ? 'active-link' : ''}>
+            WishList
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/watch-later" className={({isActive}) => isActive ? 'active-link' : ''}>
+            Watch Later
+          </NavLink>
+        </li>
       </ul>
       <div className="nav-btn">
         <div className="signin-div">

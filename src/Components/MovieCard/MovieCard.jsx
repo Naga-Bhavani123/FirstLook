@@ -5,8 +5,9 @@ import { use } from 'react'
 import { useState } from 'react'
 
 const MovieCard = ({ movie }) => {
-  const { WishlistAdd, WishListRemove, wishlist } = use(ReactContext)
+  const { WishlistAdd, WishListRemove, wishlist , watchlist, watchlistAdd,watchlistRemove} = use(ReactContext)
   const isAdded = wishlist.find(item => item.id === movie.id);
+  const isWatched = watchlist.find(item=>item.id===movie.id)
 
   const toggleWishlist = () => {
     if (isAdded) {
@@ -14,8 +15,17 @@ const MovieCard = ({ movie }) => {
     } else {
       WishlistAdd({ ...movie });
     }
-
   };
+
+  const toggleWatchlist = ()=>{
+    if (isWatched){
+      watchlistRemove(movie)
+    }
+    else{
+      watchlistAdd({...movie})
+    }
+  }
+  
   return (
     <div className="imageDiv">
       <img
@@ -24,19 +34,19 @@ const MovieCard = ({ movie }) => {
         alt={movie.title}
       />
       <div className="imageOverlay">
-        <div className="overlay">
-          <h1>{movie.title}</h1>
+        <div className="overlay"> 
+          <h1>{movie.title}  {movie.original_name}</h1>
           <div className="Playbuttons">
             <button className="addtowish" onClick={toggleWishlist}>
               <i className="bi bi-heart"></i> {isAdded ? 'Unwish it!' : 'Wish it!'}
             </button>
-            <button className="watchlater">
-              <i className="bi bi-stopwatch"></i> Watch Later
+            <button className="watchlater" onClick={toggleWatchlist}>
+              <i className="bi bi-stopwatch"></i> {isWatched ? 'UnWatch' : 'Watch Later'}
             </button>
           </div>
           <div className="rateDiv">
             <p>⭐ {movie.vote_average.toFixed(2)}</p>
-            <h2>{movie.release_date?.slice(0, 4)}</h2>
+            <h2>{(movie.release_date || movie.first_air_date).slice(0, 4)}</h2>
           </div>
         </div>
       </div>

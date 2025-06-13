@@ -3,11 +3,14 @@ import Navbar from "./Components/Navbar/Navbar";
 import TrendingSection from "./Components/TrendingSection/TrendingSection";
 import UpcomingMovies from "./Components/UpcomingMovies/UpcomingMovies";
 import HomePage from "./Components/HomePage/HomePage";
+import Tvshows from './Components/TV Shows/Tvshows';
 import ReactContext from './ReactContext/ReactContext';
 import { useState } from 'react';
 import WishList from './Components/WishList/WishList';
+import WatchList from './Components/WatchList/WatchList';
 function App() {
   const [wishlistArr, setwishlistArr] = useState([])
+  const [watchArr, setWatchArr] = useState([])
   const addWish = (movie) => {
   if (!wishlistArr.find(item => item.id === movie.id)) {
     setwishlistArr(prev => [...prev, { ...movie }]);
@@ -17,16 +20,26 @@ function App() {
   const wishremove = (movie) => {
   setwishlistArr((prev) => prev.filter((item) => item.id !== movie.id));
 };
+const addWatch = (movie)=>{
+  if (!watchArr.find(item=>item.id===(movie.id || movie.original_name))){
+    setWatchArr(prev=>[...prev, {...movie}]);
+  }
+}
+const removewatch = (movie)=>{
+  setWatchArr((prev)=>prev.filter((item)=>item.id!==movie.id))
+}
 
   return (
     <BrowserRouter>
-      <ReactContext value={{ wishlist: wishlistArr, WishlistAdd: addWish, WishListRemove: wishremove }}>
+      <ReactContext value={{ wishlist: wishlistArr, WishlistAdd: addWish, WishListRemove: wishremove, watchlist: watchArr, watchlistAdd: addWatch, watchlistRemove:removewatch }}>
         <Navbar />
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='/upcoming' element={<UpcomingMovies />} />
           <Route path='/trending' element={<TrendingSection />} />
           <Route path='/wishlist' element={<WishList />} />
+          <Route path='tv-shows' element={<Tvshows/>}/>
+          <Route path='watch-later' element={<WatchList/>}/>
         </Routes>
       </ReactContext>
     </BrowserRouter>

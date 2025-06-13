@@ -42,19 +42,21 @@
     font-size: 16px;
     padding: 8px 12px;
     cursor: pointer;
-    transition: color 0.6s ease, transform 0.3s ease;
+    transition: color 0.6s ease , transform 0.3s ease ;
+    list-style-type: none;
     border-radius: 8px;
+    text-decoration: none;
 }
 
 .nav-links li a {
-    text-decoration: none;
+     text-decoration: none;
     color: white;
     display: block;
 }
 
 .nav-links li:hover {
     color: #f43f5e;
-    transform: scale(1.02);
+    transform: scale(1.01);
     background-color: rgba(255, 255, 255, 0.05);
 }
 
@@ -80,6 +82,11 @@
     border: none;
     cursor: pointer;
     transition: background-color 0.4s ease, transform 0.3s ease;
+}
+
+li{
+    list-style-type:none;
+    text-decoration: none;
 }
 
 .signin-btn {

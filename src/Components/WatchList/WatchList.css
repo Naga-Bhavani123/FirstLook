@@ -1,11 +1,11 @@
-.wishDiv{
+.watchDiv{
     padding-top: 0px;        
   min-height: 100vh;
    display: grid;
     grid-template-columns: repeat(auto-fit , 300px);
     gap: 0px;
 }
-.wishHead{
+.watchHead{
       color: white;
     font-size: 34px;
     font-weight: 500;
@@ -13,10 +13,10 @@
     padding-bottom: 0;
     font-family: 'Edu NSW ACT Hand Pre', cursive;
 }
-.wishmainDiv{
+.watchmainDiv{
     padding-top: 70px;
 }
-.wishDes {
+.watchDes {
     font-size: 1.5rem;
     font-weight: 500;
     color: #5f5959;
@@ -30,7 +30,7 @@
     cursor: pointer;
 }
 
-.wishDes:hover {
+.watchDes:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: #888;
     color: #fff;
