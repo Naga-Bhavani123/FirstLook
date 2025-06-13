@@ -10,7 +10,7 @@ function App() {
   const [wishlistArr, setwishlistArr] = useState([])
   const addWish = (movie) => {
   if (!wishlistArr.find(item => item.id === movie.id)) {
-    setwishlistArr(prev => [...prev, { ...movie, isAdded: true }]);
+    setwishlistArr(prev => [...prev, { ...movie }]);
   }
 };
 
