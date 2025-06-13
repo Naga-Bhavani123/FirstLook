@@ -1,0 +1,7 @@
+.searchResults{
+     padding-top: 0px;        
+  min-height: 100vh;
+   display: grid;
+    grid-template-columns: repeat(auto-fit , 300px);
+    gap: 0px;
+}

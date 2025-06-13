@@ -5,6 +5,8 @@ const ReactContext = React.createContext({
     WishListRemove: ()=>{},
     watchlist: [],
     watchlistAdd: ()=>{},
-    watchlistRemove: ()=>{}
+    watchlistRemove: ()=>{},
+    searchname: '',
+    search: ()=>{}
 })
 export default ReactContext
