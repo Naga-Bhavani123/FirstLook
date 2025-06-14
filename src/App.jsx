@@ -9,6 +9,7 @@ import { useState } from 'react';
 import WishList from './Components/WishList/WishList';
 import WatchList from './Components/WatchList/WatchList';
 import SearchRoot from './Components/SearchRoot/SearchRoot';
+import Movies from './Components/Movies/Movies';
 import MovieDetails from './Components/MovieDetailsPage/MovieDetails';
 function App() {
   const [wishlistArr, setwishlistArr] = useState([])
@@ -34,7 +35,6 @@ function App() {
   const search = (changeName)=>{
     setsearchName(changeName)
   }
-  console.log(searchName)
 
   return (
     <BrowserRouter>
@@ -47,6 +47,7 @@ function App() {
           <Route path='/wishlist' element={<WishList />} />
           <Route path='/tv-shows' element={<Tvshows />} />
           <Route path='/watch-later' element={<WatchList />} />
+          <Route path='/movies' element={<Movies/>}/>
           <Route path='/search-results' element={<SearchRoot />} />
           <Route path='/movie-details/:id' element={<MovieDetails/>}/>
         </Routes>

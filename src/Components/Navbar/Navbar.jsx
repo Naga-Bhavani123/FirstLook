@@ -21,6 +21,11 @@ const Navbar = () => {
           </NavLink>
         </li>
         <li>
+          <NavLink to="/movies" className={({isActive}) => isActive ? 'active-link' : ''}>
+            Movies
+          </NavLink>
+        </li>
+        <li>
           <NavLink to="/wishlist" className={({isActive}) => isActive ? 'active-link' : ''}>
             WishList
           </NavLink>
