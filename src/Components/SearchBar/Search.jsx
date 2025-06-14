@@ -9,6 +9,7 @@ const Search = () => {
     const {search} = use(ReactContext)
     const SearchRoot = ()=>{
         navigate('./search-results')
+
     }
     const handleSearchChange = (e) => {
       e.preventDefault()

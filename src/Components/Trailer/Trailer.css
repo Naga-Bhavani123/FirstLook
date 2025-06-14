@@ -1,0 +1,25 @@
+.trailerPlayer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 20px;
+  background-color: #000; 
+  margin-top: 7%;
+}
+
+.trailerPlayer iframe {
+  border-radius: 20px;
+  width: 100%;
+  max-width: 1200px;
+  height: 700px;
+}
+
+
+.trailerPlayer .loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}

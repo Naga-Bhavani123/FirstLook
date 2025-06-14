@@ -8,7 +8,7 @@ const MovieDetails = () => {
     const navi = useNavigate()
     const { WishlistAdd, watchlistAdd,wishlist ,watchlist,WishListRemove,watchlistRemove} = use(ReactContext)
     const watchTrailer = ()=>{
-        navi(`./trailer/${movie.id}`, {state: {movie}})
+        navi(`/trailer/${movie.id}`, {state: {movie}})
     }
     const { id } = useParams();
     const movie = state?.movie;
