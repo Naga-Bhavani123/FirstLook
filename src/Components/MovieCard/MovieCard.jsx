@@ -3,13 +3,17 @@ import './MovieCard.css'
 import ReactContext from '../../ReactContext/ReactContext'
 import { use } from 'react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 const MovieCard = ({ movie }) => {
+  const navigate = useNavigate()
   const { WishlistAdd, WishListRemove, wishlist , watchlist, watchlistAdd,watchlistRemove} = use(ReactContext)
   const isAdded = wishlist.find(item => item.id === movie.id);
   const isWatched = watchlist.find(item=>item.id===movie.id)
 
-  const toggleWishlist = () => {
+  const toggleWishlist = (e) => {
+    e.stopPropagation();
     if (isAdded) {
       WishListRemove(movie);
     } else {
@@ -17,7 +21,8 @@ const MovieCard = ({ movie }) => {
     }
   };
 
-  const toggleWatchlist = ()=>{
+  const toggleWatchlist = (e)=>{
+     e.stopPropagation();
     if (isWatched){
       watchlistRemove(movie)
     }
@@ -25,9 +30,14 @@ const MovieCard = ({ movie }) => {
       watchlistAdd({...movie})
     }
   }
+  const GotoDetails = (e)=>{
+    e.preventDefault()
+    e.stopPropagation();
+    navigate(`/movie-details/${movie.id}`, { state: { movie } })
+  }
   
   return (
-    <div className="imageDiv">
+    <div className="imageDiv" onClick={GotoDetails}>
       <img
         className="imagePoster"
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
