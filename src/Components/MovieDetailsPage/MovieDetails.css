@@ -36,7 +36,7 @@ body {
 }
 
 .posterDiv img {
-    width: 100%;
+    width: 375px;
     display: block;
     border-radius: 28px;
 }
@@ -56,16 +56,16 @@ body {
 
 .movietitleHead {
     font-family: 'Edu NSW ACT Hand Pre', cursive;
-    font-size: 54px;
+    font-size: 50px;
     font-weight: 600;
     margin-bottom: 16px;
     color: #fff;
 }
 
 .movieDetails p {
-    font-size: 15px;
+    font-size: 14px;
     color: #ccc;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
 }
 
 .movieDetails p i {
@@ -75,7 +75,7 @@ body {
 }
 
 .movieDescription {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 1.6;
     font-weight: 300;
     color: #aaa;
