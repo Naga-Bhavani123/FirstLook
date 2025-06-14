@@ -2,11 +2,14 @@ import React, { use, useEffect, useState } from 'react'
 import './MovieDetails.css'
 import { useLocation, useParams } from 'react-router-dom';
 import ReactContext from '../../ReactContext/ReactContext';
-
+import { useNavigate } from 'react-router-dom';
 const MovieDetails = () => {
     const { state } = useLocation();
+    const navi = useNavigate()
     const { WishlistAdd, watchlistAdd,wishlist ,watchlist,WishListRemove,watchlistRemove} = use(ReactContext)
-
+    const watchTrailer = ()=>{
+        navi(`./trailer/${movie.id}`, {state: {movie}})
+    }
     const { id } = useParams();
     const movie = state?.movie;
    
@@ -78,7 +81,7 @@ const MovieDetails = () => {
                     ) : notAvailable}
                 </div>
                 <div className="button-group">
-                    <button className="btn btn-trailer">
+                    <button className="btn btn-trailer" onClick={watchTrailer}>
                         <i className="bi bi-play"></i> Watch Trailer
                     </button>
                     <button className="btn btn-glass" onClick={detailWish}>

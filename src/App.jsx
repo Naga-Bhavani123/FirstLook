@@ -11,6 +11,7 @@ import WatchList from './Components/WatchList/WatchList';
 import SearchRoot from './Components/SearchRoot/SearchRoot';
 import Movies from './Components/Movies/Movies';
 import MovieDetails from './Components/MovieDetailsPage/MovieDetails';
+import Trailer from './Components/Trailer/Trailer';
 function App() {
   const [wishlistArr, setwishlistArr] = useState([])
   const [watchArr, setWatchArr] = useState([])
@@ -49,6 +50,7 @@ function App() {
           <Route path='/watch-later' element={<WatchList />} />
           <Route path='/movies' element={<Movies/>}/>
           <Route path='/search-results' element={<SearchRoot />} />
+          <Route path='/trailer/:id' element={<Trailer/>}/>
           <Route path='/movie-details/:id' element={<MovieDetails/>}/>
         </Routes>
       </ReactContext>
