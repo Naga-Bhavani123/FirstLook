@@ -1,12 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Hand+Pre:wght@400..700&family=Montserrat:wght@300;400;600;700&display=swap');
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 .backdrop-bg {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.9)),
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)),
         url('https://image.tmdb.org/t/p/w780/nAxGnGHOsfzufThz20zgmRwKur3.jpg');
     background-size: cover;
     background-position: center;
@@ -19,6 +18,8 @@
     flex-wrap: wrap;
     margin: auto;
     /* margin-top: 4%; */
+    position: relative;
+    overflow: hidden;
 }
 
 .posterDiv {
@@ -46,7 +47,6 @@
     transform: translateY(-7px);
     border: 2px solid #781b1b;
 }
-
 
 .movieDetails {
     max-width: 600px;
@@ -83,8 +83,6 @@
     font-weight: 300;
     color: #aaa;
 }
-
-
 
 .button-group {
     display: flex;
@@ -181,30 +179,13 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-/* 🎯 Responsive Design Below */
-@media (max-width: 1024px) {
-    .movietitleHead {
-        font-size: 44px;
-    }
-
-    .movieDescription {
-        font-size: 15px;
-    }
-
-    .btn {
-        font-size: 15px;
-    }
-
-    .posterDiv {
-        max-width: 320px;
-    }
-}
-
 @media (max-width: 768px) {
     .backdrop-bg {
         flex-direction: column;
-        padding: 20px 10px;
+        padding: 15% 20px !important;
         text-align: center;
+        margin-top: 15%;
+        width: 100%;
     }
 
     .movietitleHead {
@@ -225,32 +206,68 @@
         justify-content: center;
     }
 }
-
-@media (max-width: 480px) {
+@media screen and (max-width: 1024px) {
+    .backdrop-bg {
+        padding-top: 15% !important;
+        justify-content: center !important;
+    }
+    
     .movietitleHead {
-        font-size: 30px;
+        font-size: 44px ;
     }
 
     .movieDescription {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .btn {
-        padding: 12px 18px;
-        font-size: 14px;
+        font-size: 15px;
     }
 
-    .genre-tag {
-        font-size: 14px;
-        padding: 5px 12px;
+    .posterDiv {
+        max-width: 320px;
+    }
+}
+
+@media (max-width: 480px) {
+    .backdrop-bg {
+        display: flex !important;
+        /* justify-content: flex-start !important; */
+        flex-direction: column;
+        /* align-items: flex-start !important; */
+    }
+    
+    .movietitleHead {
+        font-size: 38px !important;
+        text-align: start !important;
+        font-weight: 500 !important;
+    }
+
+    .movieDescription {
+        font-size: 12px !important;
+        padding: 0px 18px !important;
+        text-align: start !important;
+        text-align: center !important;
+    }
+
+    .streaminigplatforms {
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+    }
+
+    .btn {
+        padding: 12px 18px !important;
+        font-size: 14px !important;
     }
 
     .streaminigplatforms img {
-        width: 45px;
+        width: 30px !important;
     }
 
     .nostrem {
-        font-size: 12px;
-        padding: 8px 16px;
+        font-size: 12px !important;
+        padding: 8px 16px !important;
     }
 }
+
+

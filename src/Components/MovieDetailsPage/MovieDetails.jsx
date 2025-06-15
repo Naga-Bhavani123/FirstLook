@@ -71,7 +71,7 @@ const MovieDetails = () => {
 
     return (
         <div className="backdrop-bg" style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${backdropUrl})`,
+            backgroundImage: `linear-gradient(135deg,rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url(${backdropUrl})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             minHeight: '100vh',
