@@ -3,6 +3,8 @@ import './MovieDetails.css'
 import { useLocation, useParams } from 'react-router-dom';
 import ReactContext from '../../ReactContext/ReactContext';
 import { useNavigate } from 'react-router-dom';
+import ClipLoader from "react-spinners/ClipLoader";
+
 const MovieDetails = () => {
     const { state } = useLocation();
     const navi = useNavigate()
@@ -12,6 +14,8 @@ const MovieDetails = () => {
     const watchTrailer = ()=>{
         navi(`/trailer/${movie.id}`, {state: {movie,type}})
     }
+    const [loading, setLoading] = useState(true);
+
     const { id } = useParams();
    
     const isAdded = wishlist.find(item => item.id === movie.id);
@@ -37,17 +41,34 @@ const MovieDetails = () => {
 
 
     const backdropUrl = `https://image.tmdb.org/t/p/w780${movie.backdrop_path}`
-    const streamfetchURl = `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=ce676c654868e1fb7c7f39a2391400dc`
+    const streamfetchURL = `https://api.themoviedb.org/3/${type}/${id}/watch/providers?api_key=ce676c654868e1fb7c7f39a2391400dc`;
     const [movieStream, setMovieStream] = useState({})
     const notAvailable = <p className='nostrem'>No streaming platforms found</p>
     useEffect(() => {
         const fetchStream = async () => {
-            const res = await fetch(streamfetchURl)
-            const resData = await res.json()
-            setMovieStream(resData.results.CA.rent)
+        try {
+            const res = await fetch(streamfetchURL);
+            const resData = await res.json();
+            const streams = resData.results?.IN?.flatrate || resData.results?.IN?.rent || [];
+            setMovieStream(streams);
+        } catch (error) {
+            console.error("Failed to fetch streaming platforms:", error);
+            setMovieStream([]);
+        } finally {
+            setLoading(false);
         }
-        fetchStream()
-    }, [])
+    };
+    fetchStream();
+    }, [id,type])
+    if (!movie) {
+    return (
+        <div style={{ padding: "40px", color: "white" }}>
+            <h2>Movie or Show Not Found</h2>
+            <p>Return to home and try again.</p>
+        </div>
+    );
+}
+
     return (
         <div className="backdrop-bg" style={{
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${backdropUrl})`,
