@@ -11,6 +11,7 @@ const MovieCard = ({ movie }) => {
   const { WishlistAdd, WishListRemove, wishlist , watchlist, watchlistAdd,watchlistRemove} = use(ReactContext)
   const isAdded = wishlist.find(item => item.id === movie.id);
   const isWatched = watchlist.find(item=>item.id===movie.id)
+  const type = movie.media_type || (movie.first_air_date ? 'tv' : 'movie');
 
   const toggleWishlist = (e) => {
     e.stopPropagation();
@@ -33,7 +34,7 @@ const MovieCard = ({ movie }) => {
   const GotoDetails = (e)=>{
     e.preventDefault()
     e.stopPropagation();
-    navigate(`/movie-details/${movie.id}`, { state: { movie } })
+    navigate(`/movie-details/${movie.id}`, { state: { movie,type } })
   }
   
   return (

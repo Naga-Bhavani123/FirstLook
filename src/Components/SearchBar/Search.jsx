@@ -17,7 +17,7 @@ const Search = () => {
   };
   return (
     <div className="searchInput">
-                <input type="search" placeholder="Discover stories..." className="searchBox" onChange={handleSearchChange}/>
+                <input type="search" placeholder="Seach Trailers..." className="searchBox" onChange={handleSearchChange}/>
                 <i className="bi bi-search" onClick={SearchRoot}></i>
             </div>
   )

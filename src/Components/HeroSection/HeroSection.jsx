@@ -16,22 +16,21 @@ const HeroSection = () => {
 
             <video
                 autoPlay
-                muted
                 loop
                 className={`trailer ${loaded ? 'visible' : 'hidden'}`}
                 preload="auto"
                 playsInline
-                onCanPlayThrough={() => setIsLoaded(true)}
+                onCanPlayThrough={() => setIsLoaded(true)}  
             >
-                <source src="/trailer.mp4" />
+                <source src="/trailer1.mp4" />
             </video>
 
-            {loaded && (
+            {/* {loaded && (
                 <div className="trailerName">
                     <span>M</span><span>y</span><span style={{ width: '20px', display: 'inline-block' }}></span><span>F</span>
                     <span>a</span><span>u</span><span>l</span><span>t</span>
                 </div>
-            )}
+            )} */}
         </div>
     );
 };

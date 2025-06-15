@@ -7,6 +7,7 @@ const Trailer = () => {
     const { state } = useLocation()
     const movie = state?.movie;
     const { id } = useParams();
+    const type = state?.type || "movie";
     const [trailerMovie, setTrailer] = useState([])
     const [loading, setLoading] = useState(true);
 
@@ -14,7 +15,7 @@ const Trailer = () => {
         const trailerFetch = async () => {
             try {
                 const res = await fetch(
-                    `https://api.themoviedb.org/3/movie/${id}/videos?api_key=ce676c654868e1fb7c7f39a2391400dc`
+                    `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=ce676c654868e1fb7c7f39a2391400dc`
                 );
                 const resData = await res.json();
                 setTrailer(resData.results);

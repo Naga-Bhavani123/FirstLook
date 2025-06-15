@@ -6,12 +6,13 @@ import { useNavigate } from 'react-router-dom';
 const MovieDetails = () => {
     const { state } = useLocation();
     const navi = useNavigate()
+    const movie = state?.movie;
+    const type = state?.type || "movie";
     const { WishlistAdd, watchlistAdd,wishlist ,watchlist,WishListRemove,watchlistRemove} = use(ReactContext)
     const watchTrailer = ()=>{
-        navi(`/trailer/${movie.id}`, {state: {movie}})
+        navi(`/trailer/${movie.id}`, {state: {movie,type}})
     }
     const { id } = useParams();
-    const movie = state?.movie;
    
     const isAdded = wishlist.find(item => item.id === movie.id);
      const isWatched = watchlist.find(item=>item.id===movie.id)
