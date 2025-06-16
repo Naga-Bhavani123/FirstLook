@@ -17,12 +17,13 @@ const HeroSection = () => {
             <video
                 autoPlay
                 loop
+                muted
                 className={`trailer ${loaded ? 'visible' : 'hidden'}`}
                 preload="auto"
                 playsInline
                 onCanPlayThrough={() => setIsLoaded(true)}  
             >
-                <source src="/trailer1.mp4" />
+                <source src="/trailer.mp4" />
             </video>
 
             {/* {loaded && (
