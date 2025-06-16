@@ -23,7 +23,7 @@ const HeroSection = () => {
                 playsInline
                 onCanPlayThrough={() => setIsLoaded(true)}  
             >
-                <source src="/trailer.mp4" />
+                <source src="/trailer2.mp4" />
             </video>
 
             {/* {loaded && (
