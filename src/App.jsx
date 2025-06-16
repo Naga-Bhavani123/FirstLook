@@ -12,10 +12,15 @@ import SearchRoot from './Components/SearchRoot/SearchRoot';
 import Movies from './Components/Movies/Movies';
 import MovieDetails from './Components/MovieDetailsPage/MovieDetails';
 import Trailer from './Components/Trailer/Trailer';
+import Login from './Components/Login/Login';
+import { useLocation } from 'react-router-dom';
+import Registration from './Components/Registration/Registration';
+
 function App() {
-  const [wishlistArr, setwishlistArr] = useState([])
-  const [watchArr, setWatchArr] = useState([])
-  const [searchName, setsearchName] = useState('')
+  const [wishlistArr, setwishlistArr] = useState([]);
+  const [watchArr, setWatchArr] = useState([]);
+  const [searchName, setsearchName] = useState('');
+
   const addWish = (movie) => {
     if (!wishlistArr.find(item => item.id === movie.id)) {
       setwishlistArr(prev => [...prev, { ...movie }]);
@@ -23,35 +28,49 @@ function App() {
   };
 
   const wishremove = (movie) => {
-    setwishlistArr((prev) => prev.filter((item) => item.id !== movie.id));
+    setwishlistArr(prev => prev.filter(item => item.id !== movie.id));
   };
+
   const addWatch = (movie) => {
     if (!watchArr.find(item => item.id === (movie.id || movie.original_name))) {
       setWatchArr(prev => [...prev, { ...movie }]);
     }
-  }
+  };
+
   const removewatch = (movie) => {
-    setWatchArr((prev) => prev.filter((item) => item.id !== movie.id))
-  }
-  const search = (changeName)=>{
-    setsearchName(changeName)
-  }
+    setWatchArr(prev => prev.filter(item => item.id !== movie.id));
+  };
+
+  const search = (changeName) => {
+    setsearchName(changeName);
+  };
 
   return (
     <BrowserRouter>
-      <ReactContext value={{ wishlist: wishlistArr, WishlistAdd: addWish, WishListRemove: wishremove, watchlist: watchArr, watchlistAdd: addWatch, watchlistRemove: removewatch, searchname: searchName, search:search }}>
+      <ReactContext value={{
+        wishlist: wishlistArr,
+        WishlistAdd: addWish,
+        WishListRemove: wishremove,
+        watchlist: watchArr,
+        watchlistAdd: addWatch,
+        watchlistRemove: removewatch,
+        searchname: searchName,
+        search: search
+      }}>
         <Navbar />
         <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/upcoming' element={<UpcomingMovies />} />
-          <Route path='/trending' element={<TrendingSection />} />
-          <Route path='/wishlist' element={<WishList />} />
-          <Route path='/tv-shows' element={<Tvshows />} />
-          <Route path='/watch-later' element={<WatchList />} />
-          <Route path='/movies' element={<Movies/>}/>
-          <Route path='/search-results' element={<SearchRoot />} />
-          <Route path='/trailer/:id' element={<Trailer/>}/>
-          <Route path='/movie-details/:id' element={<MovieDetails/>}/>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/upcoming" element={<UpcomingMovies />} />
+          <Route path="/trending" element={<TrendingSection />} />
+          <Route path="/wishlist" element={<WishList />} />
+          <Route path="/tv-shows" element={<Tvshows />} />
+          <Route path="/watch-later" element={<WatchList />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/search-results" element={<SearchRoot />} />
+          <Route path="/trailer/:id" element={<Trailer />} />
+          <Route path="/movie-details/:id" element={<MovieDetails />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Registration />} />
         </Routes>
       </ReactContext>
     </BrowserRouter>

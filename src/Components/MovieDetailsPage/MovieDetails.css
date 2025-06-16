@@ -19,7 +19,6 @@
     margin: auto;
     /* margin-top: 4%; */
     position: relative;
-    overflow: hidden;
 }
 
 .posterDiv {
@@ -269,5 +268,4 @@
         padding: 8px 16px !important;
     }
 }
-
 
