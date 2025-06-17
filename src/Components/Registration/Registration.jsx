@@ -10,7 +10,6 @@ const Registration = () => {
   const [showpassword, setShowPassword] = useState(false);
   const [createshowpassword, setShowCreatePassword] = useState(false);
   const [message, setMessage] = useState('');
-  const [redirecting, setRedirecting] = useState(false);
 
   
 const handleSubmit = async (e) => {
@@ -43,7 +42,8 @@ const handleSubmit = async (e) => {
   try {
     const response = await fetch('https://movie-app-server-to5u.onrender.com/register', options);
     const text = await response.text();
-    setMessage(text);
+    setMessage(text.message || text.error || 'Unknown response');
+
   } catch (error) {
     setMessage('Registration failed. Please try again.');
     console.error('Error:', error);
