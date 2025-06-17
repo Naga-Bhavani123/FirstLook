@@ -33,8 +33,8 @@ useEffect(() => {
       <Navbar/>
   <h1 className='searchHEad'>Search Results</h1>
   {loading ? (
-    <div className="loader">
-      <ClipLoader color="#fff" />
+    <div className="spinner-container">
+      <ClipLoader color="#FF0000" size={60}/>
     </div>
   ) : (
     <div className='searchResults'>
