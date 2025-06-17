@@ -61,7 +61,7 @@ const handleSubmit = async (e) => {
   if (redirecting) {
     const timer = setTimeout(() => {
       navi('/login');
-    }, 2000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }

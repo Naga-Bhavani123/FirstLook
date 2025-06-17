@@ -47,7 +47,7 @@ const Login = () => {
   if (trailRedirect) {
     const timer = setTimeout(() => {
       navigate('/');
-    }, 2000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }
