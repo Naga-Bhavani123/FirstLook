@@ -13,11 +13,20 @@ const Search = () => {
     }
     const handleSearchChange = (e) => {
       e.preventDefault()
-    search(e.target.value); 
+      search(e.target.value); 
   };
+  
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault(); 
+      SearchRoot();
+    }
+  };
+
+
   return (
     <div className="searchInput">
-                <input type="search" placeholder="Seach Trailers..." className="searchBox" onChange={handleSearchChange}/>
+                <input type="search" placeholder="Seach Trailers..." onKeyDown={handleKeyDown} className="searchBox" onChange={handleSearchChange}/>
                 <i className="bi bi-search" onClick={SearchRoot}></i>
             </div>
   )

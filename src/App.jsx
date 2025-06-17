@@ -13,7 +13,6 @@ import Movies from './Components/Movies/Movies';
 import MovieDetails from './Components/MovieDetailsPage/MovieDetails';
 import Trailer from './Components/Trailer/Trailer';
 import Login from './Components/Login/Login';
-import { useLocation } from 'react-router-dom';
 import Registration from './Components/Registration/Registration';
 
 function App() {
