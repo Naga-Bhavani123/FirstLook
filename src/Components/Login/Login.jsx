@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Login.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import WelcomeToTraiflix from '../WelcomeToTraiflix/WelcomeToTraiflix';
+import HomePage from '../HomePage/HomePage';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -9,9 +11,7 @@ const Login = () => {
     const navigate= useNavigate()
   const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState('');
-  const handleSignIn = ()=>{
-    navigate('/')
-  }
+  const [trailRedirect, settraiRedirect]=useState(false)
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,17 +21,20 @@ const Login = () => {
       return;
     }
 
-    // Example placeholder logic for future API
     try {
       const response = await fetch('https://movie-app-server-to5u.onrender.com/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
         body: JSON.stringify({ email, password }),
       });
 
-      const text = await response.text();
-      setMessage(text);
+      const text = await response.json();
+      setMessage(text.message || text.error);
+      if (response.ok) {
+        setPassword('');
+        setEmail('');
+        settraiRedirect(true);
+      }
     } catch (err) {
       console.error(err);
       setMessage('Login failed. Please try again.');
@@ -39,6 +42,19 @@ const Login = () => {
   };
   const registerPage = ()=>{
     navigate('/register')
+  }
+  useEffect(() => {
+  if (trailRedirect) {
+    const timer = setTimeout(() => {
+      navigate('/');
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }
+}, [trailRedirect, navigate]);
+
+  if (trailRedirect){
+    return <WelcomeToTraiflix/>
   }
 
   return (
@@ -87,7 +103,7 @@ const Login = () => {
           <p className="loginCheckPara">Remember Me</p>
         </div> */}
 
-        <button type="submit" className="loginCreateBtn" onClick={handleSignIn}>Sign In</button>
+        <button type="submit" className="loginCreateBtn" >Sign In</button>
 
         <p className="loginAlreadyPara">
           Don't have an account? <span className="loginAlreadySpan" onClick={registerPage}>Register here</span>

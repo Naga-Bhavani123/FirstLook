@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './Registration.css';
 import { useNavigate } from 'react-router-dom';
+import RedirectToLogin from '../RedirectToLogin/RedirectToLogin';
 const Registration = () => {
   const navi = useNavigate()
   const [username, setUsername] = useState('');
@@ -10,6 +11,7 @@ const Registration = () => {
   const [showpassword, setShowPassword] = useState(false);
   const [createshowpassword, setShowCreatePassword] = useState(false);
   const [message, setMessage] = useState('');
+  const [redirecting,setRedirecting] = useState(false)
 
   
 const handleSubmit = async (e) => {
@@ -41,17 +43,37 @@ const handleSubmit = async (e) => {
 
   try {
     const response = await fetch('https://movie-app-server-to5u.onrender.com/register', options);
-    const text = await response.text();
-    setMessage(text.message || text.error || 'Unknown response');
-
+    const text = await response.json();
+    setMessage(text.message || text.error);
+     if (response.ok) {
+        setUsername('');
+        setPassword('');
+        setConfirmPassword('');
+        setEmail('');
+        setRedirecting(true);
+      }
   } catch (error) {
     setMessage('Registration failed. Please try again.');
     console.error('Error:', error);
   }
 };
+ useEffect(() => {
+  if (redirecting) {
+    const timer = setTimeout(() => {
+      navi('/login');
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }
+}, [redirecting, navi]);
+
+
+
+  if (redirecting) {
+    return <RedirectToLogin />;
+  }
 
 const directToLogin = ()=>{
-    console.log('hello')
     // e.preventDefault()
     navi('/login')
   }
