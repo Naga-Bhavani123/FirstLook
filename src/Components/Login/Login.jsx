@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import './Login.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import WelcomeToTraiflix from '../WelcomeToTraiflix/WelcomeToTraiflix';
 import HomePage from '../HomePage/HomePage';
+import ReactContext from '../../ReactContext/ReactContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -12,6 +13,9 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState('');
   const [trailRedirect, settraiRedirect]=useState(false)
+  const [islogged, setislogged]  = useState(false)
+  const {loggedCheck}  = use(ReactContext)
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -33,6 +37,8 @@ const Login = () => {
       if (response.ok) {
         setPassword('');
         setEmail('');
+        setislogged(true)
+        loggedCheck()
         settraiRedirect(true);
       }
     } catch (err) {
@@ -72,6 +78,7 @@ const Login = () => {
               placeholder="Email"
               id="loginEmail"
               className="loginEmailInput"
+               autoComplete="off"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -87,6 +94,7 @@ const Login = () => {
               placeholder="Password"
               id="loginPassword"
               className="loginPasswordInput"
+               autoComplete="off"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />

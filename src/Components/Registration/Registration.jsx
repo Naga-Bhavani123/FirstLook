@@ -90,6 +90,7 @@ const directToLogin = ()=>{
             <input
               type="text"
               placeholder="Username"
+               autoComplete="off"
               className="userInput"
               id="userId"
               value={username}
@@ -104,6 +105,7 @@ const directToLogin = ()=>{
             <i className="fas fa-envelope icon"></i>
             <input
               type="email"
+               autoComplete="off"
               placeholder="Email"
               className="emailInput"
               id="emailId"
@@ -121,6 +123,7 @@ const directToLogin = ()=>{
               type={showpassword ? 'text' : 'password'}
               placeholder="Password"
               className="passwordInput"
+               autoComplete="off"
               id="passwordId"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -142,6 +145,7 @@ const directToLogin = ()=>{
               placeholder="Confirm Password"
               className="confirmpasswordInput"
               id="confirmpasswordId"
+               autoComplete="off"
               value={confirmpassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />

@@ -20,6 +20,11 @@ function App() {
   const [wishlistArr, setwishlistArr] = useState([]);
   const [watchArr, setWatchArr] = useState([]);
   const [searchName, setsearchName] = useState('');
+  const [isLog, setisLog] = useState(false)
+
+  const loggedCheck = ()=>{
+    setisLog(prev=>!prev)
+  }
 
   const addWish = (movie) => {
     if (!wishlistArr.find(item => item.id === movie.id)) {
@@ -55,7 +60,9 @@ function App() {
         watchlistAdd: addWatch,
         watchlistRemove: removewatch,
         searchname: searchName,
-        search: search
+        search: search,
+        loggedIn: isLog,
+        loggedCheck: loggedCheck
       }}>
         <Routes>
           <Route path="/" element={<HomePage />} />

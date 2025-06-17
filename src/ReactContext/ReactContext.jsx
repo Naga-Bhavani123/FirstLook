@@ -7,6 +7,8 @@ const ReactContext = React.createContext({
     watchlistAdd: ()=>{},
     watchlistRemove: ()=>{},
     searchname: '',
-    search: ()=>{}
+    search: ()=>{},
+    loggedIn: false,
+    loggedCheck: ()=>{}
 })
 export default ReactContext
