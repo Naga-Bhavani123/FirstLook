@@ -5,6 +5,9 @@ import Search from '../SearchBar/Search';
 import ReactContext from '../../ReactContext/ReactContext';
 const Navbar = () => {
   const navig= useNavigate()
+  const tologin = ()=>{
+    navig('/login')
+  }
   const { loggedIn } = use(ReactContext)
   const navigateToRegister = ()=>{
     navig('/register')
@@ -48,7 +51,7 @@ const Navbar = () => {
         <Search />
         {loggedIn ?
           <div className='signup-div'>
-            <button className='signup-btn'>Sign Out</button>
+            <button className='signup-btn' onClick={tologin}>Sign Out</button>
           </div> : <div className='nav-btn'><div className="signin-div">
             <button className="signin-btn" onClick={navigateToLogin}>Sign In</button>
           </div>
