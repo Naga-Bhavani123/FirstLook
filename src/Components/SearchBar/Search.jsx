@@ -8,7 +8,7 @@ const Search = () => {
     const navigate = useNavigate()
     const {search} = use(ReactContext)
     const SearchRoot = ()=>{
-        navigate('./search-results')
+        navigate('/search-results')
 
     }
     const handleSearchChange = (e) => {

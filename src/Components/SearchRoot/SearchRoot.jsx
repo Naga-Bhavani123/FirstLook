@@ -3,6 +3,7 @@ import './SearchRoot.css'
 import ReactContext from '../../ReactContext/ReactContext'
 import MovieCard from '../MovieCard/MovieCard'
 import { ClipLoader } from 'react-spinners'
+import Navbar from '../Navbar/Navbar'
 const SearchRoot = () => {
   const {searchname} = use(ReactContext)
   const [result, setResult] = useState([])
@@ -29,6 +30,7 @@ useEffect(() => {
 
   return (
     <div style={{ color: "white", paddingTop: "100px" }}>
+      <Navbar/>
   <h1 className='searchHEad'>Search Results</h1>
   {loading ? (
     <div className="loader">
