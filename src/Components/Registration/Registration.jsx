@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Registration.css';
+import axios from 'axios';
 
 const Registration = () => {
   const [username, setUsername] = useState('');
@@ -130,13 +131,13 @@ const handleSubmit = async (e) => {
           </div>
         </div>
 
-        <div className="checkboxDiv">
+        {/* <div className="checkboxDiv">
           <input type="checkbox" id="checkId" />
           <p className="checkPara">
             I agree to the <span className="checkSpan">Terms of Service</span> and{' '}
             <span className="checkSpan">Privacy Policy</span>
           </p>
-        </div>
+        </div> */}
 
         <div className="createBtnDiv">
           <button type="submit" className="createBtn">

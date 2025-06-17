@@ -4,6 +4,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import ReactContext from '../../ReactContext/ReactContext';
 import { useNavigate } from 'react-router-dom';
 import ClipLoader from "react-spinners/ClipLoader";
+import Navbar from '../Navbar/Navbar';
 
 const MovieDetails = () => {
     const { state } = useLocation();
@@ -70,7 +71,9 @@ const MovieDetails = () => {
 }
 
     return (
-        <div className="backdrop-bg" style={{
+        <>
+        <Navbar />
+<div className="backdrop-bg" style={{
             backgroundImage: `linear-gradient(135deg,rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url(${backdropUrl})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
@@ -115,6 +118,8 @@ const MovieDetails = () => {
                 </div>
             </div>
         </div>
+        </>
+        
     )
 }
 

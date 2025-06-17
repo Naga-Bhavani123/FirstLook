@@ -57,7 +57,6 @@ function App() {
         searchname: searchName,
         search: search
       }}>
-        <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/upcoming" element={<UpcomingMovies />} />

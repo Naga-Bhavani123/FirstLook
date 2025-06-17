@@ -4,6 +4,7 @@ import LatestMovie from '../LatestMovie/LatestMovie'
 import PopularMovies from '../PopularMovies/PopularMovies'
 import { ClipLoader } from 'react-spinners'
 import { useState, useEffect } from 'react'
+import Navbar from '../Navbar/Navbar'
 
 const Movies = () => {
   const [isloadeds, setLoadeds] = useState(false)
@@ -21,6 +22,7 @@ const Movies = () => {
         </div>
       ) : (
         <div>
+                  <Navbar />
           <TopRatedMovies/>
         <PopularMovies/>
         <LatestMovie/>

@@ -4,6 +4,7 @@ import PopularTVShows from '../Popular Tv Shows/PopularTVShows'
 import TopRated from '../TopRated/TopRated'
 import { ClipLoader } from 'react-spinners'
 import './Tvshows.css'  
+import Navbar from '../Navbar/Navbar'
 
 const Tvshows = () => {
   const [loaded, setLoaded] = useState(false)
@@ -23,6 +24,7 @@ const Tvshows = () => {
         </div>
       ) : (
         <div>
+        <Navbar />
           <TopRated />
           <PopularTVShows />
           <Tvtrend />

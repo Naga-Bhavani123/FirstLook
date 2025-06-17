@@ -4,6 +4,7 @@ import ReactContext from '../../ReactContext/ReactContext'
 import MovieCard from '../MovieCard/MovieCard'
 import { use } from 'react'
 import { ClipLoader } from 'react-spinners'
+import Navbar from '../Navbar/Navbar'
 
 const WishList = () => {
   const { wishlist } = use(ReactContext)
@@ -30,6 +31,8 @@ const WishList = () => {
         </div>
       ) : (
         <div className='wishmainDiv'>
+        <Navbar />
+
           <h1 className='wishHead'>WishList</h1>
           {wishlist.length > 0 ? (
             <div className='wishDiv'>

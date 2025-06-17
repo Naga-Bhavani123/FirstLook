@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import './Login.css';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+    const navigate= useNavigate()
   const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState('');
+  const handleSignIn = ()=>{
+    navigate('/')
+  }
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -73,12 +79,12 @@ const Login = () => {
           </div>
         </div>
 
-        <div className="loginCheckboxDiv">
+        {/* <div className="loginCheckboxDiv">
           <input type="checkbox" id="rememberMe" />
           <p className="loginCheckPara">Remember Me</p>
-        </div>
+        </div> */}
 
-        <button type="submit" className="loginCreateBtn">Sign In</button>
+        <button type="submit" className="loginCreateBtn" onClick={handleSignIn}>Sign In</button>
 
         <p className="loginAlreadyPara">
           Don't have an account? <span className="loginAlreadySpan">Register here</span>

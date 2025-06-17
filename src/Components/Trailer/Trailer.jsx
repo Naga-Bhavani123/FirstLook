@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './Trailer.css'
 import { useLocation, useParams } from 'react-router-dom'
 import ClipLoader from "react-spinners/ClipLoader";
+import Navbar from '../Navbar/Navbar';
 
 const Trailer = () => {
     const { state } = useLocation()
@@ -35,11 +36,13 @@ const Trailer = () => {
 
     return (
         <div className="trailerPlayer">
+            <Navbar/>
             {loading ? (
                 <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '60px' }}>
                     <ClipLoader color="#FF0000" size={60} />
                 </div>
             ) : trailer ? (
+                
                 <iframe
                     src={`https://www.youtube.com/embed/${trailer.key}`}
                     width="60%"

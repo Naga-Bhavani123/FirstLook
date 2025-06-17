@@ -4,6 +4,7 @@ import { use } from 'react'
 import MovieCard from '../MovieCard/MovieCard'
 import './WatchList.css'
 import { ClipLoader } from 'react-spinners'
+import Navbar from '../Navbar/Navbar'
 
 const WatchList = () => {
   const { watchlist } = use(ReactContext)
@@ -30,6 +31,8 @@ const WatchList = () => {
         </div>
       ) : (
         <div className='watchmainDiv'>
+        <Navbar />
+
           <h1 className='watchHead'>Watch Later</h1>
           {watchlist.length > 0 ? (
             <div className='watchDiv'>
