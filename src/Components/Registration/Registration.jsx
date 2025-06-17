@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './Registration.css';
-import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
 const Registration = () => {
+  const navi = useNavigate()
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmpassword, setConfirmPassword] = useState(''); // fixed typo to match backend
@@ -10,6 +10,7 @@ const Registration = () => {
   const [showpassword, setShowPassword] = useState(false);
   const [createshowpassword, setShowCreatePassword] = useState(false);
   const [message, setMessage] = useState('');
+  
 const handleSubmit = async (e) => {
   e.preventDefault();
 
@@ -22,6 +23,7 @@ const handleSubmit = async (e) => {
     setMessage('Passwords do not match.');
     return;
   }
+  
 
   const options = {
     method: 'POST',
@@ -54,7 +56,11 @@ const handleSubmit = async (e) => {
   }
 };
 
-
+const directToLogin = ()=>{
+    console.log('hello')
+    // e.preventDefault()
+    navi('/login')
+  }
   return (
     <div className="registrationDiv">
       <form className="registerForm" onSubmit={handleSubmit}>
@@ -146,7 +152,7 @@ const handleSubmit = async (e) => {
         </div>
 
         <p className="alreadyPara">
-          Already have an account? <span className="alreadySpan">Sign in here</span>
+          Already have an account? <span className="alreadySpan" onClick={directToLogin}>Sign in here</span>
         </p>
         <p style={{ color: '#ffb347', textAlign: 'center', minHeight: 24 }}>{message}</p>
       </form>

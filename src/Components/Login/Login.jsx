@@ -17,7 +17,7 @@ const Login = () => {
     e.preventDefault();
 
     if (!email || !password) {
-      setMessage('Please fill all fields.');
+      setMessage('Please fill all fields.'); 
       return;
     }
 
@@ -37,6 +37,9 @@ const Login = () => {
       setMessage('Login failed. Please try again.');
     }
   };
+  const registerPage = ()=>{
+    navigate('/register')
+  }
 
   return (
     <div className="loginLoginDiv">
@@ -87,7 +90,7 @@ const Login = () => {
         <button type="submit" className="loginCreateBtn" onClick={handleSignIn}>Sign In</button>
 
         <p className="loginAlreadyPara">
-          Don't have an account? <span className="loginAlreadySpan">Register here</span>
+          Don't have an account? <span className="loginAlreadySpan" onClick={registerPage}>Register here</span>
         </p>
 
         <div className="loginSocialDivider">
