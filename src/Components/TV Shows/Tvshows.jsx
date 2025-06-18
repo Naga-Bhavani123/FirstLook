@@ -14,7 +14,7 @@ const Tvshows = () => {
       setLoaded(true)
     }, 500) 
     return () => clearTimeout(timer)
-  }, [])
+  })
 
   return (
     <>

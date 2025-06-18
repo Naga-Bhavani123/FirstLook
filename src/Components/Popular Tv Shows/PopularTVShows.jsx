@@ -11,7 +11,7 @@ const PopularTVShows = () => {
             setpopTVShows(resData.results)
         }
         popularTVshows()
-    })
+    },[])
   return (
     <div className='popularMainDiv'>
         <h1 className='popularHead'>Popular TV Shows</h1>

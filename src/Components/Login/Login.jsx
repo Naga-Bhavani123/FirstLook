@@ -1,5 +1,8 @@
+import Cookie from "js-cookie"
+
 import React, { use, useEffect, useState } from 'react';
 import './Login.css';
+
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import WelcomeToTraiflix from '../WelcomeToTraiflix/WelcomeToTraiflix';
@@ -35,6 +38,7 @@ const Login = () => {
       const text = await response.json();
       setMessage(text.message || text.error);
       if (response.ok) {
+        Cookie.set("jwt_token", text.token);
         setPassword('');
         setEmail('');
         setislogged(true)

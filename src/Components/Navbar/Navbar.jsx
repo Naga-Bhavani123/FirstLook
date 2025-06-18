@@ -2,10 +2,12 @@ import React, { use } from 'react';
 import './Navbar.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Search from '../SearchBar/Search';
+import Cookie from "js-cookie"
 import ReactContext from '../../ReactContext/ReactContext';
 const Navbar = () => {
   const navig= useNavigate()
   const tologin = ()=>{
+    Cookie.remove("jwt_token")
     navig('/login')
   }
   const { loggedIn } = use(ReactContext)
@@ -13,6 +15,7 @@ const Navbar = () => {
     navig('/register')
   }
   const navigateToLogin = ()=>{
+    Cookie.remove("jwt_token")
     navig('/login')
   }
   return (
@@ -49,7 +52,7 @@ const Navbar = () => {
       </ul>
       <div className="nav-btn">
         <Search />
-        {loggedIn ?
+        {Cookie.get('jwt_token') ?
           <div className='signup-div'>
             <button className='signup-btn' onClick={tologin}>Sign Out</button>
           </div> : <div className='nav-btn'><div className="signin-div">

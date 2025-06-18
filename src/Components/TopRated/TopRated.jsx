@@ -11,7 +11,7 @@ const TopRated = () => {
             settopratedshows(resData.results)
         }
         toprated()
-    })
+    },[])
   return (
     <div className='topratedMainDiv'>
         <h1 className='topRatedHead'>Top Rated TV Shows By TraiFlix</h1>
