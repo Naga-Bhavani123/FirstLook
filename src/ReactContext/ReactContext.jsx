@@ -1,14 +1,16 @@
 import React from 'react'
+
 const ReactContext = React.createContext({
     wishlist: [],
-    WishlistAdd: ()=>{},
-    WishListRemove: ()=>{},
+    WishlistAdd: () => { },
+    WishListRemove: () => { },
     watchlist: [],
-    watchlistAdd: ()=>{},
-    watchlistRemove: ()=>{},
+    watchlistAdd: () => { },
+    watchlistRemove: () => { },
     searchname: '',
-    search: ()=>{},
+    search: () => { },
     loggedIn: false,
-    loggedCheck: ()=>{}
+    loggedCheck: () => { }
 })
+
 export default ReactContext

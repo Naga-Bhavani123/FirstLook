@@ -50,6 +50,37 @@ function App() {
     setsearchName(changeName);
   };
 
+  // return (
+  //   <BrowserRouter>
+  //     <ReactContext value={{
+  //       wishlist: wishlistArr,
+  //       WishlistAdd: addWish,
+  //       WishListRemove: wishremove,
+  //       watchlist: watchArr,
+  //       watchlistAdd: addWatch,
+  //       watchlistRemove: removewatch,
+  //       searchname: searchName,
+  //       search: search,
+  //       loggedIn: isLog,
+  //       loggedCheck: loggedCheck
+  //     }}>
+  //       <Routes>
+  //         <Route path="/" element={<ProtectRoute><HomePage /></ProtectRoute>} />
+  //         <Route path="/upcoming" element={<ProtectRoute><UpcomingMovies /></ProtectRoute>} />
+  //         <Route path="/trending" element={<ProtectRoute><TrendingSection /></ProtectRoute>} />
+  //         <Route path="/wishlist" element={<ProtectRoute><WishList /></ProtectRoute>} />
+  //         <Route path="/tv-shows" element={<ProtectRoute><Tvshows /></ProtectRoute>} />
+  //         <Route path="/watch-later" element={<ProtectRoute><WatchList /></ProtectRoute>} />
+  //         <Route path="/movies" element={<ProtectRoute><Movies /></ProtectRoute>} />
+  //         <Route path="/search-results" element={<ProtectRoute><SearchRoot /></ProtectRoute>} />
+  //         <Route path="/trailer/:id" element={<ProtectRoute><Trailer /></ProtectRoute>} />
+  //         <Route path="/movie-details/:id" element={<ProtectRoute><MovieDetails /></ProtectRoute>} />
+  //         <Route path="/login" element={<Login />} />
+  //         <Route path="/register" element={<Registration />} />
+  //       </Routes>
+  //     </ReactContext>
+  //   </BrowserRouter>
+  // );
   return (
     <BrowserRouter>
       <ReactContext value={{
@@ -65,16 +96,16 @@ function App() {
         loggedCheck: loggedCheck
       }}>
         <Routes>
-          <Route path="/" element={<ProtectRoute><HomePage /></ProtectRoute>} />
-          <Route path="/upcoming" element={<ProtectRoute><UpcomingMovies /></ProtectRoute>} />
-          <Route path="/trending" element={<ProtectRoute><TrendingSection /></ProtectRoute>} />
-          <Route path="/wishlist" element={<ProtectRoute><WishList /></ProtectRoute>} />
-          <Route path="/tv-shows" element={<ProtectRoute><Tvshows /></ProtectRoute>} />
-          <Route path="/watch-later" element={<ProtectRoute><WatchList /></ProtectRoute>} />
-          <Route path="/movies" element={<ProtectRoute><Movies /></ProtectRoute>} />
-          <Route path="/search-results" element={<ProtectRoute><SearchRoot /></ProtectRoute>} />
-          <Route path="/trailer/:id" element={<ProtectRoute><Trailer /></ProtectRoute>} />
-          <Route path="/movie-details/:id" element={<ProtectRoute><MovieDetails /></ProtectRoute>} />
+          <Route path="/" element={<HomePage /> }/>
+          <Route path="/upcoming" element={<UpcomingMovies />} />
+          <Route path="/trending" element={<TrendingSection /> }  />
+          <Route path="/wishlist" element={<WishList />} />
+          <Route path="/tv-shows" element={<Tvshows />} />
+          <Route path="/watch-later" element={<WatchList />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/search-results" element={<SearchRoot />} />
+          <Route path="/trailer/:id" element={<Trailer />} />
+          <Route path="/movie-details/:id" element={<MovieDetails />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
         </Routes>
