@@ -2,22 +2,40 @@ import Cookie from "js-cookie"
 
 import React, { use, useEffect, useState } from 'react';
 import './Login.css';
-
+import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate} from 'react-router-dom';
 import WelcomeToTraiflix from '../WelcomeToTraiflix/WelcomeToTraiflix';
-import HomePage from '../HomePage/HomePage';
 import ReactContext from '../../ReactContext/ReactContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-    const navigate= useNavigate()
+  const navigate= useNavigate()
   const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState('');
   const [trailRedirect, settraiRedirect]=useState(false)
   const [islogged, setislogged]  = useState(false)
   const {loggedCheck}  = use(ReactContext)
+
+  const handleGoogleLogin = useGoogleLogin({
+        onSuccess:credentialResponse => {
+          console.log("Login Success", credentialResponse);
+          Cookie.set("jwt_token", credentialResponse.credential);
+          setEmail('');
+          setPassword('');
+          loggedCheck()
+          settraiRedirect(true);
+          // You can send credentialResponse.credential to your backend to verify
+        },
+
+        onError:() => {
+          console.log('Login Failed');
+        }
+      });
+
+
+  
 
 
   const handleLogin = async (e) => {
@@ -36,6 +54,7 @@ const Login = () => {
       });
 
       const text = await response.json();
+      console.log(text);
       setMessage(text.message || text.error);
       if (response.ok) {
         Cookie.set("jwt_token", text.token);
@@ -50,6 +69,7 @@ const Login = () => {
       setMessage('Login failed. Please try again.');
     }
   };
+
   const registerPage = ()=>{
     navigate('/register')
   }
@@ -65,6 +85,13 @@ const Login = () => {
 
   if (trailRedirect){
     return <WelcomeToTraiflix/>
+  }
+
+  const jwtToken = Cookie.get("jwt_token")
+
+  if(jwtToken){
+    return <Navigate to = "/"  />
+
   }
 
   return (
@@ -128,7 +155,18 @@ const Login = () => {
         </div>
 
         <div className="loginSocialButtons">
-          <button type="button" className="loginSocialBtn">Google</button>
+
+          <button type="button" className="loginSocialBtn" onClick={handleGoogleLogin}>
+            <img
+    src="https://developers.google.com/identity/images/g-logo.png"
+    alt="Google"
+style={{
+      background: 'transparent',
+      width: '18px',
+      height: '18px',
+      marginBottom: '5px',
+    }}  />
+  Sign in with Google</button>
           <button type="button" className="loginSocialBtn">Facebook</button>
         </div>
 

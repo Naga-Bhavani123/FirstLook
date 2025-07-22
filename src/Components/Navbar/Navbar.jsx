@@ -21,7 +21,9 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="nav-title">
-        <h1>TraiFlix</h1>
+        <h1>FirstLook
+
+</h1>
       </div>
       <ul className="nav-links">
         <li>
