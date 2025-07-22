@@ -7,6 +7,8 @@ import axios from 'axios';
 import { useNavigate, Navigate} from 'react-router-dom';
 import WelcomeToTraiflix from '../WelcomeToTraiflix/WelcomeToTraiflix';
 import ReactContext from '../../ReactContext/ReactContext';
+import { LoginSocialFacebook } from "reactjs-social-login";
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -34,6 +36,17 @@ const Login = () => {
         }
       });
 
+
+   const handleFacebookLogin = (data) => {
+    console.log("Facebook Login Success", data);
+          Cookie.set("jwt_token", data.accessToken);
+
+    setEmail('');
+          setPassword('');
+          loggedCheck()
+          settraiRedirect(true);
+
+   }
 
   
 
@@ -164,10 +177,30 @@ style={{
       background: 'transparent',
       width: '18px',
       height: '18px',
-      marginBottom: '5px',
+      marginRight: '5px',
     }}  />
-  Sign in with Google</button>
-          <button type="button" className="loginSocialBtn">Facebook</button>
+  Google</button>
+          <LoginSocialFacebook
+  appId="770459048981746"
+  scope="" // keep this or set to "email,public_profile"
+  onResolve={({ provider, data }) => handleFacebookLogin(data)}
+  onReject={(err) => handleFacebookError(err)}
+>
+  <button type="button" className="loginSocialBtn">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"
+      alt="Facebook"
+      style={{
+        background: 'transparent',
+        width: '18px',
+        height: '18px',
+        marginRight: '5px',
+      }}
+    />
+    Facebook
+  </button>
+</LoginSocialFacebook>
+
         </div>
 
         <p style={{ color: '#ffb347', textAlign: 'center', minHeight: 24 }}>{message}</p>
