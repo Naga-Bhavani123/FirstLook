@@ -177,7 +177,7 @@ style={{
       background: 'transparent',
       width: '18px',
       height: '18px',
-      marginRight: '5px',
+      marginRight: '10px',
     }}  />
   Google</button>
           <LoginSocialFacebook
@@ -194,7 +194,7 @@ style={{
         background: 'transparent',
         width: '18px',
         height: '18px',
-        marginRight: '5px',
+        marginRight: '10px',
       }}
     />
     Facebook
