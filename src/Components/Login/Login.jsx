@@ -150,10 +150,7 @@ const Login = () => {
           </div>
         </div>
 
-        {/* <div className="loginCheckboxDiv">
-          <input type="checkbox" id="rememberMe" />
-          <p className="loginCheckPara">Remember Me</p>
-        </div> */}
+       
 
         <button type="submit" className="loginCreateBtn" >Sign In</button>
 
