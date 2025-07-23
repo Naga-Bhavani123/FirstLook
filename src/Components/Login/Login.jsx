@@ -37,16 +37,16 @@ const Login = () => {
       });
 
 
-   const handleFacebookLogin = (data) => {
-    console.log("Facebook Login Success", data);
-          Cookie.set("jwt_token", data.accessToken);
+   // const handleFacebookLogin = (data) => {
+   //  console.log("Facebook Login Success", data);
+   //        Cookie.set("jwt_token", data.accessToken);
 
-    setEmail('');
-          setPassword('');
-          loggedCheck()
-          settraiRedirect(true);
+   //  setEmail('');
+   //        setPassword('');
+   //        loggedCheck()
+   //        settraiRedirect(true);
 
-   }
+   // }
 
   
 
@@ -177,7 +177,7 @@ style={{
       marginRight: '10px',
     }}  />
   Google</button>
-          <LoginSocialFacebook
+{/*           <LoginSocialFacebook
   appId="770459048981746"
   scope="" // keep this or set to "email,public_profile"
   onResolve={({ provider, data }) => handleFacebookLogin(data)}
@@ -196,7 +196,7 @@ style={{
     />
     Facebook
   </button>
-</LoginSocialFacebook>
+</LoginSocialFacebook> */}
 
         </div>
 
